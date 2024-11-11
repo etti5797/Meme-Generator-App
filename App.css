@@ -1,0 +1,261 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+}
+
+
+body, .memes-app {
+  height: 100%; /* take full height */
+}
+
+.memes-app {
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-start; /* Ensure content starts from top - no extra space at the top*/
+  width: 100%;
+  overflow: hidden; /* Prevent any overflow */
+}
+
+
+.header {
+  color: white;
+  padding: 15px; 
+  text-align: center;
+  font-size: 1.2rem; 
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.header h2 {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+
+.scrolling-container {
+  width: 100%;
+  height: calc(100vh - 120px); /* Take full height minus header space (h1 + h2 + padding ~ 120px)*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.images-container {
+  position: relative;
+  width: 90%;
+  height: 100%;
+}
+
+.images-container::before,
+.images-container::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  z-index: 99; /*The high z-index value (99) ensures these 
+  gradient overlays appear on top of the images, so the effect is visible 
+  as the user scrolls through the meme templates*/
+  height: 100%;
+  width: 150px;
+  background-image: linear-gradient(90deg, black, transparent);
+}
+
+.images-container::after {
+  right: 0;
+  background-image: linear-gradient(-90deg, black, transparent);
+}
+
+.images-scrolling {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.child {
+  min-width: 500px;
+  height: 450px;
+  margin: 1px 10px;
+  cursor: pointer;
+  border: 1px solid rgba(207, 201, 201, .3);
+  overflow: hidden;
+}
+
+.child-img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Scroll button styling */
+.scroll-button {
+  color: rgb(11, 198, 245);
+  background-color: black;
+  font-size: 50px;
+  outline: none;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.scroll-button:hover {
+  color: rgb(255, 0, 119);
+}
+
+/* second page styling */
+
+.meme-editor-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  height: 100vh; 
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box; 
+  overflow: hidden;
+  position: relative;
+}
+
+
+button {
+  background-color: #59606067; 
+  color: white; 
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px; 
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #596060;
+}
+
+button:focus {
+  outline: none;
+}
+
+
+.meme-text-up,
+.meme-text-down {
+  position: absolute;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  width: 80%;
+  max-width: 90%;
+  word-wrap: break-word;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+}
+
+/* Hide empty text fields */
+.meme-text-up:empty,
+.meme-text-down:empty {
+  display: none;
+}
+
+.meme-text-up {
+  top: 10px;
+}
+
+.meme-text-down {
+  bottom: 10px;
+}
+
+
+.image-area {
+  position: relative;
+  width: 100%;
+  height: 60vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevent image overflow */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.chosen-meme-img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain; /* Maintain image aspect ratio without cutting */
+}
+
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  flex-grow: 1; /* Make the input container grow to fill available space */
+  box-sizing: border-box; /* Ensure no overflow issues */
+}
+
+
+input {
+  background-color: transparent;
+  color: white; 
+  font-size: 1.2rem;
+  border: 1px solid rgba(207, 201, 201, .3);
+  padding: 8px 12px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px; 
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  margin: 10px 0; 
+  transition: border-color 0.3s ease;
+}
+
+
+input:focus {
+  border-color: #596060; 
+  outline: none; 
+}
+
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+.download-button {
+  background-color: #59606067;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px; 
+  transition: background-color 0.3s ease;
+  align-self: center; 
+  margin-bottom: 20px; 
+}
+
+.download-button:hover {
+  background-color: #596060;
+}
+
+.download-button:focus {
+  outline: none;
+}
+
